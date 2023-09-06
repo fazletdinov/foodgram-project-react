@@ -5,10 +5,10 @@
 
 ### Как запустить проект:
 
-Установить на сервере docker и docker-compose. Скопировать на сервер файлы docker-compose.yaml и default.conf:
+Установить на сервере docker и docker-compose. Скопировать на сервер файлы docker-compose.production.yml и nginx.conf:
 
 ```
-scp docker-compose.yml <логин_на_сервере>@<IP_сервера>:/home/<логин_на_сервере>/docker-compose.yml
+scp docker-compose.production.yml <логин_на_сервере>@<IP_сервера>:/home/<логин_на_сервере>/docker-compose.production.yml
 scp nginx.conf <логин_на_сервере>@<IP_сервера>:/home/<логин_на_сервере>/nginx.conf
 
 ```
