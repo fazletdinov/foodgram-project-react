@@ -1,8 +1,7 @@
-from django.conf import settings
-from django.contrib import admin
-
 from app.models import (Favorite, Ingredient, Recipe, RecipeIngredient,
                         ShoppingCart, Tag)
+from django.conf import settings
+from django.contrib import admin
 
 
 @admin.register(Tag)
