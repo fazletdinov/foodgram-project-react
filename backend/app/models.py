@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
 
+from foodgram.settings import MAX_LENGTH_200, MAX_LENGTH_7
+
 User = get_user_model()
 
 
@@ -9,17 +11,17 @@ class Tag(models.Model):
     """Модель для тэгов"""
     name = models.CharField(
         'Название',
-        max_length=200,
+        max_length=MAX_LENGTH_200,
         unique=True
     )
     color = models.CharField(
         'Цвет',
-        max_length=7,
+        max_length=MAX_LENGTH_7,
         unique=True
     )
     slug = models.SlugField(
         'Слаг',
-        max_length=200,
+        max_length=MAX_LENGTH_200,
         unique=True
     )
 
@@ -35,11 +37,11 @@ class Ingredient(models.Model):
     """Модель для ингридиентов"""
     name = models.CharField(
         'Название',
-        max_length=200,
+        max_length=MAX_LENGTH_200,
     )
     measurement_unit = models.CharField(
         'Единица измерения',
-        max_length=200,
+        max_length=MAX_LENGTH_200,
     )
 
     class Meta:
@@ -60,7 +62,7 @@ class Recipe(models.Model):
     )
     name = models.CharField(
         'Название',
-        max_length=200,
+        max_length=MAX_LENGTH_200,
     )
     image = models.ImageField(
         'Изображение',
@@ -180,9 +182,13 @@ class ShoppingCart(models.Model):
         related_name='carts',
         verbose_name='Рецепт'
     )
+    created = models.DateTimeField(
+        "Дата добавления",
+        auto_now_add=True
+    )
 
     class Meta:
-        ordering = ['-id']
+        ordering = ['-created']
         constraints = [
             models.UniqueConstraint(
                 fields=['user', 'recipe'],
