@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from django.db import models
-
-from foodgram.settings import MAX_LENGTH_200, MAX_LENGTH_7
+from foodgram.settings import MAX_LENGTH_7, MAX_LENGTH_200
 
 User = get_user_model()
 
